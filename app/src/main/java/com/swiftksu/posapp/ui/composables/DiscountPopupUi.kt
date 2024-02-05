@@ -11,9 +11,7 @@ fun DiscountPopupUi(
     onApplyDiscountClick: (discountPer: Float, disAmount: Float) -> Unit
 ) {
     if (popupControl) {
-        Popup(offset = IntOffset(100, 100), onDismissRequest = {
-            Log.d("Mariya", "onDismissRequest")
-        }) {
+        Popup(offset = IntOffset(100, 100)) {
             // Composable content to be shown in the Popup
             AddDiscountUi(onApplyDiscountClick)
         }

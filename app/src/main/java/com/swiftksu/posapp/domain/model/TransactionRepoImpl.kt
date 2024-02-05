@@ -16,12 +16,6 @@ class TransactionRepoImpl(
     override suspend fun saveTransaction(transaction: Transaction) {
         val transactionEntity = transaction.toEntity()
         transactionDao.saveTransaction(transactionEntity)
-
-        // Save transaction items
-        transaction.txnItems.forEach {
-            val transactionItemEntity = it.toEntity(transaction.txnId)
-//            transactionDao.addTransactionItem(transactionItemEntity)
-        }
     }
 
     override suspend fun deleteEarlierSavedTransactions() {
@@ -36,12 +30,6 @@ class TransactionRepoImpl(
     override suspend fun addCompletedTransaction(transaction: Transaction) {
         val transactionEntity = transaction.toEntity()
         transactionDao.addCompletedTransaction(transactionEntity)
-
-        // Save transaction items
-        transaction.txnItems.forEach {
-            val transactionItemEntity = it.toEntity(transaction.txnId)
-//            transactionDao.addTransactionItem(transactionItemEntity)
-        }
     }
 
     override suspend fun getAllTransactionsHistory(): List<Transaction> {

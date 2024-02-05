@@ -140,7 +140,7 @@ class DashboardViewModel @Inject constructor(
                 txnTotalDiscountAmount = _viewState.value.discount,
                 txnTotalTaxAmount = _viewState.value.totalTax,
                 txnSubTotalAmount = _viewState.value.subTotal,
-                txnStatus = TransactionStatus.SAVED,
+                txnStatus = TransactionStatus.COMPLETED,
                 txnStartTime = trxnStartTime,
             )
             transactionRepository.addCompletedTransaction(transaction)
@@ -155,6 +155,7 @@ class DashboardViewModel @Inject constructor(
         }
         viewModelScope.launch {
             _transactionHistory.value = transactionRepository.getAllTransactionsHistory()
+            Log.d(TAG,  "transactions = ${_transactionHistory.value.size}")
         }
     }
 

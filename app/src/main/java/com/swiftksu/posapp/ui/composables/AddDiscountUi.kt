@@ -44,5 +44,9 @@ fun TextInput(label: String, id: Int) {
                 discountAmount = it.toFloat()
             }
             state.value = it
-        }, label = { Text(text = label) })
+        },
+        label = {
+            Text(text = label)
+        }
+    )
 }
