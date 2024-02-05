@@ -1,0 +1,4 @@
+    <resources>
+
+    <style name="Theme.PoSApp" parent="@style/Theme.Leanback" />
+</resources>

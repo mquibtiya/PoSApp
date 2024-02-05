@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PoSApp</string>
+    <string name="title_activity_grid_items">GridItemsActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
