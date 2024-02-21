@@ -1,5 +1,6 @@
 package com.swiftksu.posapp.ui.composables
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -11,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.core.text.isDigitsOnly
 
 private var discountPer: Float = 0.0f
 private var discountAmount: Float = 0.0f
@@ -32,18 +34,20 @@ fun AddDiscountUi(onApplyDiscountClick: (discountPer: Float, disAmount: Float) -
 @Composable
 fun TextInput(label: String, id: Int) {
     val state = remember {
-        mutableStateOf("0")
+        mutableStateOf("")
     }
     TextField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         value = state.value,
-        onValueChange = {
+        onValueChange = { textInput ->
+            Log.d("Mariya", "onValueChange : $textInput")
+            if (!(textInput.isDigitsOnly() || textInput.contains("."))) return@TextField
+            state.value = textInput
             if (id == 1) {
-                discountPer = it.toFloat()
+                discountPer = textInput.toFloat()
             } else {
-                discountAmount = it.toFloat()
+                discountAmount = textInput.toFloat()
             }
-            state.value = it
         },
         label = {
             Text(text = label)

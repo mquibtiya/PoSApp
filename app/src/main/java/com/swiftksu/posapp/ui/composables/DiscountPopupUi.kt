@@ -1,9 +1,9 @@
 package com.swiftksu.posapp.ui.composables
 
-import android.util.Log
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
 
 @Composable
 fun DiscountPopupUi(
@@ -11,7 +11,10 @@ fun DiscountPopupUi(
     onApplyDiscountClick: (discountPer: Float, disAmount: Float) -> Unit
 ) {
     if (popupControl) {
-        Popup(offset = IntOffset(100, 100)) {
+        Popup(
+            alignment = Alignment.Center,
+            properties = PopupProperties(focusable = true)
+        ) {
             // Composable content to be shown in the Popup
             AddDiscountUi(onApplyDiscountClick)
         }

@@ -78,7 +78,7 @@ class DashboardViewModel @Inject constructor(
                     tT += ((item.price * tax) / 100f)
                 }
                 tT += it.totalTax
-                val gT = sT + tT - 0f
+                val gT = sT + tT - it.discount
                 it.copy(
                     transactionItems = transactionItems,
                     subTotal = sT,
